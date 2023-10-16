@@ -24,24 +24,49 @@ public class Sketch extends PApplet {
    */
   public void setup() {
 
-
-
+  // moving sun 
+    if (circleRandomX > 0 && circleRandomX < 133) {
+        background(51, 153, 255);
+        text("GOOD MORNING!", 100, 300);
+      }
+      else if (circleRandomX > 133 && circleRandomX < 266){
+        background(0, 0, 255);
+        text("GOOD AFTERNOON!", 100, 300);
+      }
+      else {
+        background(0, 0, 204);
+        textSize(15);
+        text("GOOD NIGHT GO TO SLEEP!", 25, 300);
+      }
+    fill(255, 255, 0);
+    ellipse(circleRandomX, circleRandomY, 75, 75);
 
   }
+
   Random myCircle = new Random ();
   int circleRandomX = myCircle.nextInt((399 - 10) + 1 ) + 10;
-  int circleRandomY = myCircle.nextInt((199 - 25) + 1 ) + 10;
+  int circleRandomY = myCircle.nextInt((100 - 25) + 1 ) + 10;
+
   /**
    * Called repeatedly, anything drawn to the screen goes here
    */
   public void draw() {
 
-  // declare booleans
-    boolean isMorning = circleRandomX <= 200;
-    boolean isNight = circleRandomX >= 200;
-    boolean isMorningY = circleRandomY <= 200;
-    boolean isNightY = circleRandomY >= 200;
+  // declare time variables  
+    int intTimeHours = hour();
+    int intTimeMinutes = minute();
 
+  // print out time
+  if (intTimeMinutes > 9){
+    textSize(20);
+    fill(intTimeMinutes*2, intTimeMinutes*4, intTimeMinutes*2);
+    text("The time is: " + intTimeHours + ":" + intTimeMinutes, 100, 50); 
+  }
+  else 
+    textSize(20);
+    fill(0, 0, 0);
+    text("The time is: " + intTimeHours + ":" + intTimeMinutes, 100, 50);
+  
   
   // house
     strokeWeight(3);
@@ -52,28 +77,8 @@ public class Sketch extends PApplet {
     rect((float)(width/1.7), (float)(height/1.56), (float)(width/7.2), (float)(height/4.2));
     ellipse(425, 480, 25, 25);
     ellipse((float)(width/1.41), (float)(height/1.25), width/24, height/24);
-
-  // moving sun 
-    ellipse(circleRandomX, circleRandomY, 75, 75);
-    if (isMorning == true) {
-      background(51,153, 255);
-      textSize(15);
-      text("It is morning time", 100, 150);
+    
     }
-    else if (isMorningY == true){
-      background(51,153, 255);
-      textSize(15);
-      text("It is morning time", 100, 150);
-    }
-    else if (isNight == true){
-      background(0, 0, 204);
-      textSize(15);
-      text("It is night time", 100, 150);
-    }
-    else if (isNightY == true){
-      background(0, 0, 204);
-      textSize(15);
-      text("It is night time", 100, 150);
     }
 
   
@@ -81,7 +86,7 @@ public class Sketch extends PApplet {
       
      
 
-      }
+      
     
     
     
@@ -90,7 +95,7 @@ public class Sketch extends PApplet {
 
     
 
-  }
+  
 
 
   
